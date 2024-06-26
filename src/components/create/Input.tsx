@@ -1,3 +1,4 @@
+//Import Types
 import { InputProps } from "../../types/default";
 
 const Input = ({
@@ -14,8 +15,8 @@ const Input = ({
   required,
 }: InputProps) => {
   return (
-    <main className="flex flex-col gap-y-1 text-xs sm:text-sm xl:text-base">
-      <label className="cursor-pointer" htmlFor={id}>
+    <main className="flex flex-col gap-y-1">
+      <label className="cursor-pointer text-xs sm:text-sm xl:text-base" htmlFor={id}>
         {label}
       </label>
       <input
@@ -26,7 +27,7 @@ const Input = ({
         onChange={onChange}
         pattern={pattern}
         title={title}
-        className={`w-full bg-inherit px-2 xl:px-4 py-3 border border-bgDark duration-300 focus:border-accentColor focus:outline-none ${widthClass} ${otherClass}`}
+        className={`w-full placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base bg-inherit px-2 xl:px-4 py-3 border border-bgDark duration-300 focus:border-accentColor focus:outline-none ${widthClass} ${otherClass}`}
         required={required}
       />
     </main>
