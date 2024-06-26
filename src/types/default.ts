@@ -27,3 +27,9 @@ export type DropdownProps = {
   otherClass?: string;
   options: Option[];
 };
+
+//For the text area
+export type TextareaProps = {
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void; 
+}
