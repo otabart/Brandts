@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 //Import Needed Icons
 import { Category2 } from "iconsax-react";
@@ -10,6 +11,8 @@ const NavBar = () => {
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
+
+  const location = useLocation();
 
   return (
     <main className="relative">
@@ -32,19 +35,19 @@ const NavBar = () => {
           <nav className="flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:items-center md:gap-x-3 xl:gap-x-5 mt-20 md:mt-0">
             <Link
               to="create"
-              className="font-medium hover:text-white md:hover:text-primaryBlue"
+              className={`${location.pathname === "/create" && "text-white md:text-primaryBlue"} font-medium hover:text-white md:hover:text-primaryBlue`}
             >
               Create Campaign
             </Link>
             <Link
               to="view"
-              className="font-medium hover:text-white md:hover:text-primaryBlue"
+              className={`${location.pathname === "/view" && "text-white md:text-primaryBlue"} font-medium hover:text-white md:hover:text-primaryBlue`}
             >
               View Campaign
             </Link>
             <Link
               to="dashboard"
-              className="font-medium hover:text-white md:hover:text-primaryBlue"
+              className={`${location.pathname === "/dashboard" && "text-white md:text-primaryBlue"} font-medium hover:text-white md:hover:text-primaryBlue`}
             >
               Dashboard
             </Link>

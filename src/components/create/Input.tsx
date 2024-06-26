@@ -26,7 +26,7 @@ const Input = ({
         onChange={onChange}
         pattern={pattern}
         title={title}
-        className={`bg-inherit px-2 xl:px-4 py-3 border duration-300 focus:border-primaryBlue focus:outline-none ${widthClass} ${otherClass}`}
+        className={`w-full bg-inherit px-2 xl:px-4 py-3 border border-bgDark duration-300 focus:border-accentColor focus:outline-none ${widthClass} ${otherClass}`}
         required={required}
       />
     </main>
