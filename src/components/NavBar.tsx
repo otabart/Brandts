@@ -27,7 +27,7 @@ const NavBar = () => {
         <div
           className={`${
             isOpen ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 fixed md:static top-0 left-0 w-72 p-4 md:p-0 md:w-auto h-full md:h-auto bg-primaryBlue md:bg-white transition-transform duration-300 ease-in-out z-10`}
+          } md:translate-x-0 fixed md:static top-0 left-0 w-72 p-4 md:p-0 md:w-auto h-full md:h-auto bg-primaryBlue md:bg-white transition-transform duration-300 ease-in-out z-50`}
         >
           <nav className="flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:items-center md:gap-x-3 xl:gap-x-5 mt-20 md:mt-0">
             <Link
@@ -57,7 +57,7 @@ const NavBar = () => {
       </div>
       {isOpen && (
         <div
-          className="md:hidden fixed inset-0 bg-black opacity-50"
+          className="md:hidden fixed inset-0 bg-black opacity-50 z-20"
           onClick={toggleMenu}
         ></div>
       )}
