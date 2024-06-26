@@ -2,8 +2,8 @@
 
 const Home = () => {
     return ( 
-        <main>
-            <h1>This is the home page</h1>
+        <main className="h-screen background">
+            <h1 className="text-red-600">This is the home page</h1>
         </main>
      );
 }
