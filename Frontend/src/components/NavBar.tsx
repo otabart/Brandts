@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 
 //Import Needed Icons
-import { Category2 } from "iconsax-react";
+import { Category2, CloseCircle } from "iconsax-react";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -32,6 +32,8 @@ const NavBar = () => {
             isOpen ? "translate-x-0" : "-translate-x-full"
           } md:translate-x-0 fixed md:static top-0 left-0 w-72 p-4 md:p-0 md:w-auto h-full md:h-auto bg-primaryBlue md:bg-white transition-transform duration-300 ease-in-out z-50`}
         >
+          <CloseCircle size="32" variant="Bold" className="md:hidden absolute top-4 right-4 cursor-pointer" onClick={toggleMenu}/>
+
           <nav className="flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:items-center md:gap-x-3 xl:gap-x-5 mt-20 md:mt-0">
             <Link
               to="create"
