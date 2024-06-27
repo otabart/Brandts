@@ -1,0 +1,7 @@
+[
+    { "name" : "Adult"},
+    { "name" : "Children"},
+    { "name" : "Male"},
+    { "name" : "Female"},
+    { "name" : "Everyone"}
+]
