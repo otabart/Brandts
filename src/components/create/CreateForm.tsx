@@ -12,8 +12,8 @@ import Textarea from "./Textarea";
 
 const CreateForm = () => {
   return (
-    <main className="relative flex justify-center lg:justify-between bg-primaryBlue">
-      <div className="fixed h-screen lg:h-auto lg:static lg:w-[50%] backdrop-blur-sm bg-white/30 flex items-center justify-center w-full">
+    <main className="relative flex justify-center lg:justify-between">
+      <div className="fixed h-screen lg:h-auto lg:static lg:w-[50%] backdrop-blur-sm bg-white/30 flex items-center justify-center">
         <img
           src={createImage}
           alt="Hero Section Image"
