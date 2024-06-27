@@ -24,7 +24,7 @@ const CreateForm = () => {
         <p className="font-semibold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">Create a new Campaign</p>
         <p className="text-xs md:text-sm xl:text-base mt-1">Create, share, and measure campaign success effortlessly.</p>
 
-        <form action="" className="mt-10 text-left flex flex-col gap-y-5 mx-auto">
+        <form action="" className="mt-10 text-left flex flex-col gap-y-5 mx-auto text-xs md:text-sm xl:text-base">
             <Input type="text" id="title" placeholder="Eg: Kiki Dance Challenge" label="Campaign Title" required={true} otherClass="bg-white rounded-xl"/>
             <Input type="text" id="image" placeholder="Enter Your Image Link (URL)" label="Campaign Image" required={true} otherClass="bg-white rounded-xl"/>
             <Textarea />
