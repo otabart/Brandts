@@ -724,6 +724,10 @@ video {
   width: 20rem;
 }
 
+.w-\[16rem\] {
+  width: 16rem;
+}
+
 .min-w-40 {
   min-width: 10rem;
 }
@@ -1197,6 +1201,10 @@ video {
     width: 48%;
   }
 
+  .sm\:w-\[18rem\] {
+    width: 18rem;
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -1452,6 +1460,14 @@ video {
     width: 50%;
   }
 
+  .lg\:w-\[20rem\] {
+    width: 20rem;
+  }
+
+  .lg\:justify-start {
+    justify-content: flex-start;
+  }
+
   .lg\:justify-between {
     justify-content: space-between;
   }
@@ -1509,6 +1525,10 @@ video {
 
   .xl\:w-\[45\%\] {
     width: 45%;
+  }
+
+  .xl\:gap-10 {
+    gap: 2.5rem;
   }
 
   .xl\:gap-x-5 {
