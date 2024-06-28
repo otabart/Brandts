@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import UserService from "../services/user.service";
+import UserService from "../services/campaign.service";
 import AuthRequest from "../interfaces/auth.interface";
 import CustomResponse from "../utils/helpers/response.util";
 import { JWT_SECRET, MESSAGES } from "../configs/constants.config";
