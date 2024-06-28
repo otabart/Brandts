@@ -2,6 +2,7 @@
 export type InputProps = {
     type: string;
     placeholder?: string;
+    name?: string;
     label?: string;
     id?: string;
     value?: string;
