@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 //Import Images
-import HeroSectionImage from "../../../public/images/casual-life-3d-woman-taking-funny-photo-with-dog_result.svg";
+import HeroSectionImage from "/images/casual-life-3d-woman-taking-funny-photo-with-dog_result.svg";
 
 const HeroSection = () => {
   return (

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { createPreview } from "../../utils/cutSentence";
 
 //Import Testing Images
-import instagram from "../../../public/images/instagram.svg";
+import instagram from "/images/instagram.svg";
 
 const CampaignCard = ({sampleData}: any) => {
 
@@ -27,7 +27,7 @@ const CampaignCard = ({sampleData}: any) => {
                   <p className="font-medium">{data.audience}</p>
                 </div>
             </div>
-            <Link className="mt-4 text-primaryBlue hover:text-bgDark duration-300" to={`/view/${data.id}`}>
+            <Link className="mt-4 text-primaryBlue hover:text-bgDark duration-300" to={`/details`}>
               Read More
             </Link>
         </div>
