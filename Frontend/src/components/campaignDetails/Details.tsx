@@ -1,6 +1,10 @@
 import { useState } from "react";
+
+//Import Needed Components
 import Input from "../create/Input";
 
+//Import Needed Images
+import x from "/images/X.svg";
 
 const Details = () => {
 
@@ -15,6 +19,7 @@ const Details = () => {
             <main className="flex flex-col gap-y-5 md:flex-row md:justify-between ">
                 <div className="flex flex-col gap-y-5 md:w-[48%]">
                     <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-medium">Campaign Title</p>
+                    <img src={x} className="size-10 sm:size-14 md:size-20 lg:size-24 xl:size-28 2xl:size-32"></img>
                     <p>campaign description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus orci ac auctor augue. Nec feugiat in fermentum posuere urna nec tincidunt praesent. Morbi tristique senectus et netus et malesuada fames</p>
                     <button onClick={toggleForm} className="w-40 md:w-60 rounded-3xl px-5 py-3 bg-bgDark border-inherit border-2 text-white hover:text-inherit hover:bg-white duration-300">Apply</button>
                     {/* You can make it a separate component, depending on how you wanna handle the submission */}

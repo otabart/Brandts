@@ -16,14 +16,14 @@ const Submissions = () => {
                 </div>
             {/* Map the inputs here, also I do think the name, email, and address should be in the way I did it as a sample, for security purposes, only the campaign owner should see it */}
                 <div className="mt-2 grid gridDesign overflow-x-auto gap-5 text-center special border border-gray-400 text-base">
-                    <div className="h-10"><p className="mt-2">Sample *****</p></div>
-                    <div className="bg-gray-200 h-10"><p className="mt-2">Samp**@****.com</p></div>
-                    <div className="h-10"><p className="mt-2">Sample **** Nigeria</p></div>
-                    <div className="bg-gray-200 h-10"><p className="mt-2">sample.link</p></div>
-                    <div className="h-10"><p className="mt-2">10k</p></div>
-                    <div className="bg-gray-200 h-10"><p className="mt-2">4k</p></div>
-                    <div className="h-10"><p className="mt-2">2k</p></div>
-                    <div className="bg-gray-200 h-10"><button className="w-full px-5 h-full bg-bgDark text-white hover:bg-black duration-300">Disqualify</button></div>
+                    <div className="py-2 h-auto min-h-10"><p>Sample *****</p></div>
+                    <div className="bg-gray-200 py-2 h-auto min-h-10"><p>Samp**@****.com</p></div>
+                    <div className="py-2 h-auto min-h-10"><p>Sample **** Nigeria</p></div>
+                    <div className="bg-gray-200 py-2 h-auto min-h-10"><p>sample.link</p></div>
+                    <div className="py-2 h-auto min-h-10"><p>10k</p></div>
+                    <div className="bg-gray-200 py-2 h-auto min-h-10"><p>4k</p></div>
+                    <div className="py-2 h-auto min-h-10"><p>2k</p></div>
+                    <div className="bg-gray-200 h-auto min-h-10"><button className="w-full py-2 px-5 h-full bg-bgDark text-white hover:bg-black duration-300">Disqualify</button></div>
                 </div>
             </section>
         </main>
