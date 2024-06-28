@@ -16,16 +16,16 @@ const Details = () => {
                 <div className="flex flex-col gap-y-5 md:w-[48%]">
                     <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-medium">Campaign Title</p>
                     <p>campaign description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus orci ac auctor augue. Nec feugiat in fermentum posuere urna nec tincidunt praesent. Morbi tristique senectus et netus et malesuada fames</p>
-                    <button onClick={toggleForm} className="w-40 md:w-60  rounded-3xl px-5 py-3 bg-bgDark border-inherit border-2 text-white hover:text-inherit hover:bg-white duration-300">Apply</button>
+                    <button onClick={toggleForm} className="w-40 md:w-60 rounded-3xl px-5 py-3 bg-bgDark border-inherit border-2 text-white hover:text-inherit hover:bg-white duration-300">Apply</button>
                     {/* You can make it a separate component, depending on how you wanna handle the submission */}
                     {seeForm &&
-                        <form className="mt-10" action="">
+                        <form className="my-10" action="">
                             <Input id="url" label="Your Submission Url" type="text" placeholder="Enter Your Submission Url Here" required={true} otherClass="rounded-2xl focus:border-accentColor"/>
                             <button className="w-40 md:w-60 mt-4 rounded-3xl px-5 py-3 bg-primaryBlue border-inherit border-2 text-white hover:text-inherit hover:bg-accentColor duration-300" type="submit">Submit Url</button>
                         </form>
                     }
                 </div>
-                <section className="md:w-[48%] flex flex-col gap-y-5 md:gap-y-10">
+                <section className="md:w-[48%] flex flex-col gap-y-5 md:gap-y-10 mt-10 md:mt-0">
                     <p className={`font-bold`}>Campaign Status</p>
                     <div>
                         <div className="flex gap-x-1 items-center">
@@ -67,6 +67,7 @@ const Details = () => {
                             <p>campaign requirements and additional links</p>
                         </div>
                     </div>
+                    <button className="text-left font-semibold text-primaryBlue hover:text-accentColor duration-300">Copy Campaign Link</button>
                 </section>
             </main>
         </section>
