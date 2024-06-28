@@ -10,7 +10,7 @@ const HeroSection = () => {
         <img
           src={HeroSectionImage}
           alt="Hero Section Image"
-          className="w-[32rem] mx-auto "
+          className="w-[32rem] mx-auto"
         />
       </div>
 

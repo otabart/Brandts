@@ -34,3 +34,11 @@ export type TextareaProps = {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void; 
 }
+
+//For the Custom Hero Section
+export type CustomHeroSection = {
+  imageUrl: string,
+  imageUrl1?: string,
+  heading: string,
+  subHeading: string
+}
