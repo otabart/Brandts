@@ -42,3 +42,20 @@ export type CustomHeroSection = {
   heading: string,
   subHeading: string
 }
+
+//For the Dashboard Card
+export type DashboardCardProps = {
+  icon: React.ReactNode,
+  amount: number | string,
+  color: string,
+  text: string
+  otherClass: string;
+}
+
+//For the Accordion
+export type AccordionItemProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  content: any;
+  isOpen: null | string;
+  toggle: () => void;
+};

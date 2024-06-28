@@ -10,7 +10,7 @@ const HeroSection = ({imageUrl, imageUrl1, heading, subHeading}: CustomHeroSecti
             </div>
             <div className="sm:w-[48%]">
                 <img className="hidden sm:block w-[32rem] mx-auto" src={imageUrl}></img>
-                <img className="sm:hidden w-[32rem] mx-auto" src={imageUrl1}></img>
+                <img className="sm:hidden w-[32rem] mx-auto" src={imageUrl1 ? imageUrl1 : imageUrl}></img>
             </div>
         </main>
      );
