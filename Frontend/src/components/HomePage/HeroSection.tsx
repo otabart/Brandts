@@ -5,7 +5,7 @@ import HeroSectionImage from "/images/casual-life-3d-woman-taking-funny-photo-wi
 
 const HeroSection = () => {
   return (
-    <main className="flex flex-col-reverse gap-y-10 md:flex-row md:justify-between md:items-center py-20 md:py-32 xl:py-40 px-5 sm:px-10 md:px-15 xl:px-20 background">
+    <main className="flex flex-col-reverse gap-y-10 md:flex-row md:justify-between md:items-center py-20 md:py-32 xl:py-40 px-5 sm:px-10 md:px-15 xl:px-20 background border-y border-bgDark">
       <div className="w-full md:w-[48%] xl:w-[45%] h-auto backdrop-blur-sm bg-white/30 rounded-2xl p-8">
         <img
           src={HeroSectionImage}

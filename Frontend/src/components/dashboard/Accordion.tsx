@@ -1,4 +1,4 @@
-import React from 'react';
+//Import Needed Icons
 import { ArrowDown3 } from 'iconsax-react';
 
 // Import Needed Types
@@ -9,8 +9,8 @@ const Accordion: React.FC<AccordionItemProps> = ({ content, isOpen, toggle }) =>
     <section className="my-4">
       <main
         onClick={toggle}
-        className={`cursor-pointer rounded-xl text-xs md:text-sm xl:text-base flex items-center justify-between border border-bgDark border-opacity-50 p-2 sm:p-3 md:p-5 xl:p-7 ${
-          isOpen === content.id && 'border-accentColor'
+        className={`cursor-pointer rounded-tr-xl rounded-tl-xl text-xs md:text-sm xl:text-base flex items-center justify-between border border-bgDark border-opacity-50 p-2 sm:p-3 md:p-5 xl:p-7 ${
+          isOpen === content.id && 'border border-primaryBlue'
         }`}
       >
         <p className="font-medium">{content.name}</p>
@@ -32,7 +32,7 @@ const Accordion: React.FC<AccordionItemProps> = ({ content, isOpen, toggle }) =>
       >
         <div
           className={`flex flex-col gap-y-3 p-4 rounded-br-xl rounded-bl-xl border border-bgDark border-opacity-50 ${
-            isOpen === content.id && 'border-accentColor'
+            isOpen === content.id && 'border-primaryBlue'
           }`}
         >
           <div className="flex justify-between">
