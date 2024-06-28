@@ -29,9 +29,9 @@ const CreateForm = () => {
             <Input type="text" id="image" placeholder="Enter Your Image Link (URL)" label="Campaign Image" required={true} otherClass="bg-white rounded-xl"/>
             <Textarea />
             <Input type="text" id="goal" placeholder="Enter Your Goal" label="Campaign Goal" required={true} otherClass="bg-white rounded-xl"/>
-            <Input type="text" id="duration" placeholder="Eg: Three Weeks" label="Enter Campaign Duration" required={true} otherClass="bg-white rounded-xl"/>
-            <Input type="text" id="budget" pattern="\d+" title="Please enter only numbers (0-9)" placeholder="Amount in Dollars Eg: 5,000" label="Campaign Budget" required={true} otherClass="bg-white rounded-xl"/>
-            <Input type="text" id="requirement" placeholder="Eg: Three Minutes Video" label="Campaign Requirement" required={true} otherClass="bg-white rounded-xl"/>
+            <Input type="text" id="duration" placeholder="Eg: 3" label="Enter Campaign Duration(days)" required={true} otherClass="bg-white rounded-xl"/>
+            <Input type="text" id="budget" pattern="\d+" title="Please enter only numbers (0-9)" placeholder="Amount in Ethereum Eg: 2" label="Campaign Budget" required={true} otherClass="bg-white rounded-xl"/>
+            <Input type="text" id="requirement" placeholder="Eg: Three Minutes Video with at least 100 likes" label="Campaign Requirement" required={true} otherClass="bg-white rounded-xl"/>
             <Dropdown label="Campaign Audience" id="audience" options={targetAudience}/>
             <Dropdown label="Campaign Apps" id="apps" options={apps}/>
             <Input type="text" id="additionalLinks" placeholder="Additional Links?" label="Additional Links" required={true} otherClass="bg-white rounded-xl"/>
