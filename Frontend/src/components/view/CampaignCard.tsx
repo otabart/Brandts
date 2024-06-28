@@ -10,7 +10,7 @@ const CampaignCard = ({sampleData}: any) => {
 
   return (
     <main className="flex flex-wrap gap-5 xl:gap-10 text-xs md:text-sm xl:text-base">
-        {sampleData.map((data) => (
+        {sampleData.map((data: any) => (
         <div key={data.id} className="flex flex-col gap-y-3 min-w-[16rem] w-[16rem] sm:w[14rem] lg:w-[20rem] mt-4 shadow border border-[#F0F0F0] p-2 md:p-4 xl:p-6 py-8 rounded-2xl">
             <img className="size-10 sm:size-14 md:size-20 lg:size-24 xl:size-28 2xl:size-32 mx-auto" src={instagram}></img>
             <div className="mt-4">

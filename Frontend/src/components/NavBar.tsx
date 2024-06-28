@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 
 //Import Needed Icons
-import { Category2 } from "iconsax-react";
+import { Category2, CloseCircle } from "iconsax-react";
 import Dropdown from "./connectWallet/Dropdown";
 import { useAccount, useDisconnect } from 'wagmi'
 
