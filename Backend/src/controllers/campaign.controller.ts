@@ -12,7 +12,7 @@ export default class CampaignController {
 
         try {
 
-            const campaign = req.body;
+            const campaign = await CampaignService.create(req.body);
 
             return new CustomResponse(OK, true, "Campaign created successfully", res, campaign);
 
