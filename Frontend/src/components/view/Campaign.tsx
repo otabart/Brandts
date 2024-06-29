@@ -1,7 +1,7 @@
 import CampaignCard from "./CampaignCard";
 
 //Import Sample data
-import campaignData from "../../../public/data/campaign.json"
+import campaignData from "../../data/campaign.json"
 
 //Import Needed Icons
 import { ArrowLeft3, ArrowRight3 } from "iconsax-react";

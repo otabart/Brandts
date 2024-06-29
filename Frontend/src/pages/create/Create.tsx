@@ -14,11 +14,9 @@ const Create = () => {
         const data = { ...campaign };
 
         try {
-            console.log(data)
-            // const response = await createCampaign(data);
-            // navigate(`/campaign/${response.data.id}`);
-            await createCampaign(data);
-            navigate(`/`);
+            const response = await createCampaign(data);
+            console.log(response.data)
+            navigate(`/campaign/${response.data.data._id}`);
         } catch (error) {
             console.error('Error creating campaign:', error);
         }

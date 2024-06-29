@@ -4,7 +4,7 @@ import { useState } from "react";
 import Accordion from "./Accordion";
 
 //Import Needed Sample Data
-import details from "../../../public/data/details.json";
+import details from "../../data/details.json";
 
 const DashboardDetails = () => {
 
