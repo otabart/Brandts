@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //Import Needed Components
 import Input from "../create/Input";
@@ -37,6 +39,15 @@ const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
     const toggleForm = () => {
         setSeeForm((prev) => !prev)
     }
+
+    const copyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            toast.success('Link copied to clipboard!');
+        } catch (err) {
+            toast.error('Failed to copy the link.');
+        }
+    };
 
     return (
         <section className="py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-15 xl:px-20 text-xs md:text-sm xl:text-base mt-10">
@@ -125,7 +136,10 @@ const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
                             <p> <a style={{ color: "#1DA1F2" }} href={campaign.additionalLink}>Additional Link</a></p>
                         </div>
                     </div>
-                    <button className="text-left font-semibold text-primaryBlue hover:text-accentColor duration-300">Copy Campaign Link</button>
+                    <div>
+                        <button onClick={copyLink} className="w-40 md:w-60 mt-4 rounded-3xl px-5 py-3 bg-primaryBlue border border-primaryBlue text-white hover:text-inherit hover:bg-accentColor duration-300" type="submit">Copy Url</button>
+                        <ToastContainer />
+                    </div>
                 </section>
             </main>
         </section>
