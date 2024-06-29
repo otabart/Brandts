@@ -3,37 +3,34 @@ import { Link } from "react-router-dom";
 //Import Needed Utils
 import { createPreview } from "../../utils/cutSentence";
 
-//Import Testing Images
-import instagram from "/images/instagram.svg";
-
-const CampaignCard = ({sampleData}: any) => {
-
+const CampaignCard = ({ campaigns }: any) => {
+  console.log(campaigns)
   return (
     <main className="flex flex-wrap gap-5 xl:gap-10 text-xs md:text-sm xl:text-base">
-        {sampleData.map((data: any) => (
-        <div key={data.id} className="flex flex-col gap-y-3 min-w-[16rem] w-[16rem] sm:w[14rem] lg:w-[20rem] mt-4 shadow border border-[#F0F0F0] p-2 md:p-4 xl:p-6 py-8 rounded-2xl">
-            <img className="size-10 sm:size-14 md:size-20 lg:size-24 xl:size-28 2xl:size-32 mx-auto" src={instagram}></img>
-            <div className="mt-4">
-              <p className="bg-textGrey rounded-3xl font-medium px-4 py-2">
-                {data.title}
-              </p>
+      {campaigns.map((data: any) => (
+        <div key={data._id} className="flex flex-col gap-y-3 min-w-[16rem] w-[16rem] sm:w[14rem] lg:w-[20rem] mt-4 shadow border border-[#F0F0F0] p-2 md:p-4 xl:p-6 py-8 rounded-2xl">
+          <img className="size-10 sm:size-14 md:size-20 lg:size-24 xl:size-28 2xl:size-32 mx-auto" src={data.image}></img>
+          <div className="mt-4">
+            <p className="bg-textGrey rounded-3xl font-medium px-4 py-2">
+              {data.title}
+            </p>
+          </div>
+          <div className="mt-4">
+            <p>
+              {data.description ? createPreview(data.description, 20) : null}
+            </p>
+            <div className="mt-4 flex justify-between items-center">
+              <p className="font-semibold"><strong>Pool:</strong> {data.budget} Eth</p>
+              <p className="font-medium"><strong>Duration:</strong> {data.duration} days</p>
             </div>
-            <div className="mt-4">
-                <p>
-                  {createPreview(data.description, 20)}
-                </p>
-                <div className="mt-4 flex gap-x-3 items-center">
-                  <p className="font-semibold">{data.budget}</p>
-                  <p className="font-medium">{data.audience}</p>
-                </div>
-            </div>
-            <Link className="mt-4 text-primaryBlue hover:text-bgDark duration-300" to={`/details/${data.id}`}>
-              Read More
-            </Link>
+          </div>
+          <Link className="mt-4 text-primaryBlue hover:text-bgDark duration-300" to={`/details/${data._id}`}>
+            Read More
+          </Link>
         </div>
-        ))}
-      
-      
+      ))}
+
+
     </main>
   );
 };

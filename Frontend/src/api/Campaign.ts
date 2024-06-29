@@ -10,6 +10,15 @@ export const createCampaign = (campaignData: {}) => {
     });
 };
 
+export const fetchCampaigns = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/campaign/`);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.error || 'Error fetching campaigns';
+    }
+};
+
 export const fetchCampaignById = async (id: string) => {
     try {
         const response = await axios.get(`${API_URL}/campaign/${id}`);
