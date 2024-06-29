@@ -51,7 +51,7 @@ class CampaignController {
                         // traffic = await getXDetails(submission.submissionUrl);
                     }
                     return {
-                        id: submission.userId,
+                        _id: submission._id,
                         name: submission.name,
                         email: submission.email,
                         address: submission.userId,
