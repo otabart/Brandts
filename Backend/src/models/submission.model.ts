@@ -10,6 +10,18 @@ const submissionSchema = new Schema<ISubmission>({
     submissionUrl: {
         type: String,
         trim: true
+    },
+    campaignId: {
+        type: String,
+        trim: true
+    },
+    name: {
+        type: String,
+        trim: true
+    },
+    email: {
+        type: String,
+        trim: true
     }
 }, {
     strict: true,

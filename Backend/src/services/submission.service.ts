@@ -36,4 +36,19 @@ export default class SubmissionService {
             throw new HttpException(INTERNAL_SERVER_ERROR, error.message);
         }
     }
+
+    async find(query: {}) {
+        try {
+
+            const submissions = await SubmissionRepository.find(query);
+
+            return submissions;
+
+        } catch (error: any) {
+
+            if (error.status === NOT_FOUND) throw error;
+
+            throw new HttpException(INTERNAL_SERVER_ERROR, error.message);
+        }
+    }
 }

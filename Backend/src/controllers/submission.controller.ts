@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import CustomResponse from "../utils/helpers/response.util";
 import HttpException from "../utils/helpers/httpException.util";
 import { INTERNAL_SERVER_ERROR, OK } from "../utils/statusCodes.util";
-import Submission from "../services/submission.interface";
+import Submission from "../services/submission.service";
 const SubmissionService = new Submission();
 
 export default class SubmissionController {
