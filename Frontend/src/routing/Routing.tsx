@@ -19,7 +19,7 @@ export default function Routing() {
                 <Route path="/" element={<Home />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/view" element={<View />} />
-                <Route path="/details" element={<Details />} />
+                <Route path="/details/:id" element={<Details />} />
                 <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </>

@@ -11,10 +11,9 @@ const Create = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async (campaign: any) => {
-        const data = { ...campaign };
 
         try {
-            const response = await createCampaign(data);
+            const response = await createCampaign(campaign);
             console.log(response.data)
             navigate(`/campaign/${response.data.data._id}`);
         } catch (error) {
