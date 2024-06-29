@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = 'https://brandts-backend.vercel.app/api/v1';
 
 export const createCampaign = (campaignData: {}) => {
-    return axios.post(`${API_URL}/campaign`, { campaignData }, {
+    return axios.post(`${API_URL}/campaign`, campaignData, {
         headers: {
             'Content-Type': 'application/json'
         }
