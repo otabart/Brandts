@@ -1,6 +1,10 @@
-//Import Needed Components
 import { useNavigate } from 'react-router-dom';
+
+//Import Needed Components
 import CreateForm from "../../components/create/CreateForm";
+import Footer from '../../components/HomePage/Footer';
+
+//Import Server actions and utils
 import { createCampaign } from '../../api/Campaign';
 
 const Create = () => {
@@ -23,6 +27,7 @@ const Create = () => {
     return ( 
         <main>
             <CreateForm onSubmit={handleSubmit} />
+            <Footer />
         </main>
      );
 }

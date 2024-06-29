@@ -4,10 +4,16 @@
 
 *{ font-family: "Poppins", sans-serif; }
 
-
+/* Background Gradient */
 .background {
   background: linear-gradient(135deg, #1da1f2, #a8b1ff);
 }
+
+/* Grid Styles, tailwind messing up, decided not to use it again, leaving it here incase you change your mind*/
+.gridDesign {
+  grid-template-columns: repeat(8, 11rem);
+}
+
 
 /* Custom style for customized scroll bar */
 .special::-webkit-scrollbar {
