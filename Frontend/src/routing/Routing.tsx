@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //Import Pages
 import Home from "../pages/homepage/Home";
@@ -14,6 +16,8 @@ import NavBar from "../components/NavBar";
 export default function Routing() {
     return (
         <>
+            <ToastContainer position="bottom-right" autoClose={2000} />
+
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />

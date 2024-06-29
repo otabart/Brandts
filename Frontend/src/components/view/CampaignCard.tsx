@@ -29,8 +29,6 @@ const CampaignCard = ({ campaigns }: any) => {
           </Link>
         </div>
       ))}
-
-
     </main>
   );
 };
