@@ -43,8 +43,7 @@ const CampaignDetails = () => {
 
     const handleDisqualify = async (submissionId: string) => {
         try {
-            const response = await disqualifyCreator(submissionId);
-            console.log('Creator disqualified:', response.data);
+            await disqualifyCreator(submissionId);
             setCampaign((prevCampaign: any) => ({
                 ...prevCampaign,
                 creatorDetails: prevCampaign.creatorDetails.filter(
@@ -64,8 +63,9 @@ const CampaignDetails = () => {
                 campaign?.creatorDetails.length > 0 ? (
                     <Submissions campaigns={campaign?.creatorDetails} handleDisqualify={handleDisqualify} />
                 ) : (
-                    <p>No submissions yet</p>
-                )
+                    <p style={{ marginTop: "10px" }} className="text-2xl md:text-4xl xl:text-6xl font-semibold text-center">
+                        NO SUBMISSION YET
+                    </p>)
             ) : (
                 <p>Loading creator details...</p>
             )}

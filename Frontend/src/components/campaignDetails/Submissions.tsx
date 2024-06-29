@@ -1,5 +1,5 @@
 const Submissions: React.FC<any> = ({ campaigns = [], handleDisqualify }) => {
-    console.log(campaigns)
+
     return (
         <main className="py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-15 xl:px-20 text-xs md:text-sm xl:text-base mt-10">
             <p className="text-lg md:text-xl xl:text2xl font-medium">Creators Submissions</p>
