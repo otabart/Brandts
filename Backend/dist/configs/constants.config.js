@@ -5,7 +5,8 @@ exports.PORT = process.env.PORT || 9871;
 exports.JWT_SECRET = process.env.JWT_SECRET;
 exports.BASEPATH = "/api/v1";
 exports.DATABASES = {
-    USER: "user"
+    CAMPAIGN: "Campaign",
+    SUBMISSION: "Submission"
 };
 exports.MAXAGE = 3 * 24 * 60 * 60;
 exports.MESSAGES = {

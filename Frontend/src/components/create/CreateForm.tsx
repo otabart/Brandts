@@ -7,8 +7,8 @@ import Dropdown from "./Dropdown";
 import createImage from "../../../public/images/create.svg";
 
 //Import Needed Data
-import targetAudience from "../../../public/data/targetAudience.json"
-import apps from "../../../public/data/apps.json"
+import targetAudience from "../../data/targetAudience.json"
+import apps from "../../data/apps.json"
 import Textarea from "./Textarea";
 interface CreateFormProps {
   onSubmit: (campaign: CampaignData) => void;

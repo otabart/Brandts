@@ -14,13 +14,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authenticateCompany = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const user_service_1 = __importDefault(require("../services/user.service"));
+const campaign_service_1 = __importDefault(require("../services/campaign.service"));
 const response_util_1 = __importDefault(require("../utils/helpers/response.util"));
 const constants_config_1 = require("../configs/constants.config");
 const statusCodes_util_1 = require("../utils/statusCodes.util");
 const constants_util_1 = require("../utils/constants.util");
 const httpException_util_1 = __importDefault(require("../utils/helpers/httpException.util"));
-const { findById, findByApiKey } = new user_service_1.default();
+const { findById, findByApiKey } = new campaign_service_1.default();
 const { TOKEN_ERROR, INVALID_TOKEN } = constants_config_1.MESSAGES.AUTH;
 const { UNEXPECTED_ERROR } = constants_config_1.MESSAGES;
 // check jwt exists & is valid
