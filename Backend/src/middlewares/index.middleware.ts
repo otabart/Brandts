@@ -15,7 +15,7 @@ export default (app: Application) => {
   // CORS middleware
   app.use(cors({
     origin: "*",
-    methods: ["GET", "POST", "PUT", "PATCH"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ['Content-Type', 'Authorization']
   }));
 
