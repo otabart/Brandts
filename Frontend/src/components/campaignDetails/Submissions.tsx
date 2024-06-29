@@ -19,7 +19,7 @@ const Submissions: React.FC<any> = ({ campaigns = [], handleDisqualify }) => {
                     {campaigns ? <tbody>
                         {campaigns.map((campaign: any, index: number) => (
                             <tr
-                                key={campaign._id}
+                                key={index}
                                 className={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-gray-100 transition duration-200`}
                             >
                                 <td className="py-4 px-5">{campaign.name}</td>

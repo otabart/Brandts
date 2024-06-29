@@ -20,7 +20,7 @@ export const fetchCampaignById = async (id: string) => {
 };
 
 export const submitCampaign = (data: {}) => {
-    return axios.post(`${API_URL}/submission`, { data }, {
+    return axios.post(`${API_URL}/submission`, data, {
         headers: {
             'Content-Type': 'application/json'
         }

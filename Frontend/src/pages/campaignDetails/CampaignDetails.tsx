@@ -24,7 +24,6 @@ const CampaignDetails = () => {
             try {
                 const campaignData = await fetchCampaignById(id!);
                 setCampaign(campaignData.data);
-                console.log(campaignData.data.creatorDetails)
             } catch (error: any) {
                 setError(error.message);
             } finally {
@@ -34,10 +33,9 @@ const CampaignDetails = () => {
         fetchCampaign();
     }, [id]);
 
-    const handleLinkSubmit = async (submissionLink: string) => {
+    const handleLinkSubmit = async (submissionLink: {}) => {
         try {
-            const response = await submitCampaign(submissionLink);
-            console.log('Campaign created:', response.data);
+            await submitCampaign(submissionLink);
         } catch (error) {
             console.error('Error submitting link:', error);
         }
@@ -64,7 +62,7 @@ const CampaignDetails = () => {
             <Details campaign={campaign?.campaignDetails} loading={loading} error={error} onSubmit={handleLinkSubmit} />
             {campaign && campaign.creatorDetails ? (
                 campaign?.creatorDetails.length > 0 ? (
-                    <Submissions campaigns={campaign?.creatorDetails} onDisqualify={handleDisqualify} />
+                    <Submissions campaigns={campaign?.creatorDetails} handleDisqualify={handleDisqualify} />
                 ) : (
                     <p>No submissions yet</p>
                 )

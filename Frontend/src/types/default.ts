@@ -6,6 +6,7 @@ export type InputProps = {
     label?: string;
     id?: string;
     value?: string;
+    style?: any;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     pattern?: string;
     title?: string;
