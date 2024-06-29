@@ -8,6 +8,7 @@ const Input = ({
   id,
   value,
   name,
+  style,
   onChange,
   pattern,
   title,
@@ -25,6 +26,7 @@ const Input = ({
         name={name}
         placeholder={placeholder}
         id={id}
+        style={style}
         value={value}
         onChange={onChange}
         pattern={pattern}
