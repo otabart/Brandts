@@ -27,7 +27,7 @@ const CampaignCard = ({sampleData}: any) => {
                   <p className="font-medium">{data.audience}</p>
                 </div>
             </div>
-            <Link className="mt-4 text-primaryBlue hover:text-bgDark duration-300" to={`/details`}>
+            <Link className="mt-4 text-primaryBlue hover:text-bgDark duration-300" to={`/details/${data.id}`}>
               Read More
             </Link>
         </div>
