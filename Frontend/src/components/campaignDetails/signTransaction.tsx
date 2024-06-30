@@ -4,6 +4,7 @@ import CampaignManagerABI from "../../ABI/campaignManagerABI.json";
 import { ethers, parseEther } from 'ethers';
 import { useMemo, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const types = {
     Campaign: [
@@ -12,10 +13,11 @@ const types = {
     ],
 };
 
-const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
+const SignTransaction: React.FC<any> = ({ campaign }) => {
     const account = useAccount()
     const { signTypedDataAsync } = useSignTypedData();
     const [signature, setSignature] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     const domain = {
         name: 'CampaignManager',
@@ -82,6 +84,8 @@ const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
     const handleCloseCampaign = async (campaignId: string) => {
         try {
             await closeCampaignById(campaignId);
+            toast.success("Campaign closed successfully")
+            window.location.reload();
         } catch (error) {
             console.error('Error closing campaign:', error);
         }
@@ -90,10 +94,8 @@ const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
     const handleDeleteCampaign = async (campaignId: string) => {
         try {
             await deleteCampaignById(campaignId);
-            setCampaign((prevCampaign: any) => ({
-                ...prevCampaign,
-                campaignDetails: prevCampaign.campaignDetails.status === "closed"
-            }));
+            toast.success("Campaign deleted successfully")
+            navigate(`/dashboard`);
         } catch (error) {
             console.error('Error closing campaign:', error);
         }
@@ -137,7 +139,8 @@ const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
                         >
                             Close Campaign
                         </button>
-                    </div>)}
+                    </div>)
+                }
                 {(campaign.status === "inProgress") &&
                     <div className="mt-4 flex flex-col items-center" style={{ marginTop: "20px" }}>
                         <button
@@ -150,6 +153,19 @@ const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
                         </button>
                     </div>
                 }
+                {(campaign.status === "closed") &&
+                    <div className="mt-4 flex flex-col items-center" style={{ marginTop: "20px" }}>
+                        <button
+                            // onClick={() => handleDeleteCampaign(campaign._id)}
+                            className="w-40 md:w-60 rounded-3xl px-5 py-3 bg-bgDark border-inherit border-2 text-white hover:text-inherit hover:bg-accentColor duration-300"
+                            type="submit"
+                            style={{ marginRight: "20px" }}
+                        >
+                            Payout
+                        </button>
+                    </div>
+                }
+                {(campaign.status === "paid") && <p></p>}
             </>
         )}
     </div>)
