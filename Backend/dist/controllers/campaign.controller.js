@@ -75,9 +75,9 @@ class CampaignController {
     }
     closeCampaign(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { campaignId } = req.params;
+            const { id } = req.params;
             try {
-                const closedCampaign = yield CampaignService.closeById(campaignId);
+                const closedCampaign = yield CampaignService.closeById(id);
                 return new response_util_1.default(statusCodes_util_1.OK, true, "Campaign closed successfully", res, closedCampaign);
             }
             catch (error) {
@@ -90,9 +90,9 @@ class CampaignController {
     }
     deleteCampaign(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { campaignId } = req.params;
+            const { id } = req.params;
             try {
-                const deletedCampaign = yield CampaignService.deleteById(campaignId);
+                const deletedCampaign = yield CampaignService.deleteById(id);
                 return new response_util_1.default(statusCodes_util_1.OK, true, "Campaign deleted successfully", res, deletedCampaign);
             }
             catch (error) {

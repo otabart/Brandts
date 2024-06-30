@@ -74,10 +74,10 @@ export default class CampaignController {
     }
 
     async closeCampaign(req: Request, res: Response) {
-        const { campaignId } = req.params;
+        const { id } = req.params;
 
         try {
-            const closedCampaign = await CampaignService.closeById(campaignId);
+            const closedCampaign = await CampaignService.closeById(id);
 
             return new CustomResponse(OK, true, "Campaign closed successfully", res, closedCampaign);
         } catch (error: any) {
@@ -89,10 +89,10 @@ export default class CampaignController {
     }
 
     async deleteCampaign(req: Request, res: Response) {
-        const { campaignId } = req.params;
+        const { id } = req.params;
     
         try {
-            const deletedCampaign = await CampaignService.deleteById(campaignId);
+            const deletedCampaign = await CampaignService.deleteById(id);
     
             return new CustomResponse(OK, true, "Campaign deleted successfully", res, deletedCampaign);
         } catch (error: any) {
