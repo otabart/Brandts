@@ -165,6 +165,7 @@ const SignTransaction: React.FC<any> = ({ campaign }) => {
                         </button>
                     </div>
                 }
+                {(campaign.status === "paid") && <p></p>}
             </>
         )}
     </div>)

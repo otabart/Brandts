@@ -96,7 +96,7 @@ const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
                 </div>
                 <section className="md:w-[48%] flex flex-col gap-y-5 md:gap-y-10 mt-10 md:mt-0">
                     <p style={{ marginTop: "10px" }} className={`text-2xl ${campaign.status === 'open' ? 'text-green-600' : 'text-red-600'} uppercase md:text-4xl xl:text-6xl font-bold text-center`}>
-                        {campaign.status}
+                        {campaign.status === "paid" ? "CLOSED" : campaign.status}
                     </p>
                     <div>
                         <div className="flex gap-x-1 items-center">
