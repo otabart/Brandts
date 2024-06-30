@@ -7,7 +7,7 @@ import Input from "../create/Input";
 import { useAccount } from "wagmi";
 import SignTransaction from "./signTransaction";
 
-const Details: React.FC<any> = ({ campaign, setCampaign, loading, error, onSubmit }) => {
+const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
     const account = useAccount()
 
     const [seeForm, setSeeForm] = useState<boolean>(false)
@@ -95,7 +95,7 @@ const Details: React.FC<any> = ({ campaign, setCampaign, loading, error, onSubmi
                     }
                 </div>
                 <section className="md:w-[48%] flex flex-col gap-y-5 md:gap-y-10 mt-10 md:mt-0">
-                    <p style={{ marginTop: "10px" }} className="text-2xl uppercase md:text-4xl xl:text-6xl font-semibold text-center text-primaryBlue">
+                    <p style={{ marginTop: "10px" }} className={`text-2xl ${campaign.status === 'open' ? 'text-green-600' : 'text-red-600'} uppercase md:text-4xl xl:text-6xl font-bold text-center`}>
                         {campaign.status}
                     </p>
                     <div>
@@ -145,7 +145,7 @@ const Details: React.FC<any> = ({ campaign, setCampaign, loading, error, onSubmi
                     </div>
                 </section>
             </main>
-            <SignTransaction campaign={campaign} setCampaign={setCampaign} />
+            <SignTransaction campaign={campaign} />
         </section>
     );
 }
