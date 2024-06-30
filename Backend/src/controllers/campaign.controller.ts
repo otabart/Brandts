@@ -73,6 +73,36 @@ export default class CampaignController {
         }
     }
 
+    async closeCampaign(req: Request, res: Response) {
+        const { campaignId } = req.params;
+
+        try {
+            const closedCampaign = await CampaignService.closeById(campaignId);
+
+            return new CustomResponse(OK, true, "Campaign closed successfully", res, closedCampaign);
+        } catch (error: any) {
+            if (error instanceof HttpException) {
+                return new CustomResponse(error.status, false, error.message, res);
+            }
+            return new CustomResponse(INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+        }
+    }
+
+    async deleteCampaign(req: Request, res: Response) {
+        const { campaignId } = req.params;
+    
+        try {
+            const deletedCampaign = await CampaignService.deleteById(campaignId);
+    
+            return new CustomResponse(OK, true, "Campaign deleted successfully", res, deletedCampaign);
+        } catch (error: any) {
+            if (error instanceof HttpException) {
+                return new CustomResponse(error.status, false, error.message, res);
+            }
+            return new CustomResponse(INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+        }
+    }
+
     async getDashboardInfo(req: Request, res: Response) {
         try {
             const campaigns = await CampaignService.findByUserId(req.params.userId);
@@ -163,7 +193,7 @@ export default class CampaignController {
         }
     }
 
-    async getAllCampaign(req: Request, res: Response) {
+    async getAllCampaign(_req: Request, res: Response) {
 
         try {
 

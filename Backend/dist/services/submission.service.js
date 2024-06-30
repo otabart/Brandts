@@ -50,8 +50,17 @@ class SubmissionService {
                 return submissions;
             }
             catch (error) {
-                if (error.status === statusCodes_util_1.NOT_FOUND)
-                    throw error;
+                throw new httpException_util_1.default(statusCodes_util_1.INTERNAL_SERVER_ERROR, error.message);
+            }
+        });
+    }
+    findOne(query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const submissions = yield SubmissionRepository.findOne(query);
+                return submissions;
+            }
+            catch (error) {
                 throw new httpException_util_1.default(statusCodes_util_1.INTERNAL_SERVER_ERROR, error.message);
             }
         });

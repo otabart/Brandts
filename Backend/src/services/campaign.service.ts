@@ -40,7 +40,7 @@ export default class CampaignService {
     async findByUserId(id: string) {
         try {
 
-            const campaign = await CampaignRepository.find({userId: id});
+            const campaign = await CampaignRepository.find({ userId: id });
 
             return campaign;
 
@@ -62,4 +62,42 @@ export default class CampaignService {
             throw new HttpException(INTERNAL_SERVER_ERROR, error.message);
         }
     }
+
+    async closeById(id: string) {
+        try {
+            const campaign = await CampaignRepository.findById(id);
+
+            if (!campaign) {
+                throw new HttpException(NOT_FOUND, "Campaign not found");
+            }
+
+            campaign.status = "closed";
+            await campaign.save();
+
+            return campaign;
+        } catch (error: any) {
+            if (error.status === NOT_FOUND) {
+                throw error;
+            }
+            throw new HttpException(INTERNAL_SERVER_ERROR, `Error closing campaign: ${error.message}`);
+        }
+    }
+
+    async deleteById(id: string) {
+        try {
+            const campaign = await CampaignRepository.deleteById(id);
+    
+            if (!campaign) {
+                throw new HttpException(NOT_FOUND, "Campaign not found");
+            }
+    
+            return campaign;
+        } catch (error: any) {
+            if (error.status === NOT_FOUND) {
+                throw error;
+            }
+            throw new HttpException(INTERNAL_SERVER_ERROR, `Error deleting campaign: ${error.message}`);
+        }
+    }   
+
 }

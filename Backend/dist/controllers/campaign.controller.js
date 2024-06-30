@@ -73,6 +73,36 @@ class CampaignController {
             }
         });
     }
+    closeCampaign(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { campaignId } = req.params;
+            try {
+                const closedCampaign = yield CampaignService.closeById(campaignId);
+                return new response_util_1.default(statusCodes_util_1.OK, true, "Campaign closed successfully", res, closedCampaign);
+            }
+            catch (error) {
+                if (error instanceof httpException_util_1.default) {
+                    return new response_util_1.default(error.status, false, error.message, res);
+                }
+                return new response_util_1.default(statusCodes_util_1.INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+            }
+        });
+    }
+    deleteCampaign(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { campaignId } = req.params;
+            try {
+                const deletedCampaign = yield CampaignService.deleteById(campaignId);
+                return new response_util_1.default(statusCodes_util_1.OK, true, "Campaign deleted successfully", res, deletedCampaign);
+            }
+            catch (error) {
+                if (error instanceof httpException_util_1.default) {
+                    return new response_util_1.default(error.status, false, error.message, res);
+                }
+                return new response_util_1.default(statusCodes_util_1.INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+            }
+        });
+    }
     getDashboardInfo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -153,7 +183,7 @@ class CampaignController {
             }
         });
     }
-    getAllCampaign(req, res) {
+    getAllCampaign(_req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const campaigns = yield CampaignService.findAll();
