@@ -57,7 +57,7 @@ class CampaignService {
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const campaign = yield CampaignRepository.find({});
+                const campaign = yield CampaignRepository.find({ status: "open" });
                 return campaign;
             }
             catch (error) {

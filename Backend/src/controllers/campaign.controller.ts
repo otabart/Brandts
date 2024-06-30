@@ -107,7 +107,7 @@ export default class CampaignController {
         try {
             const campaign = await CampaignService.findById(req.params.id);
             const submissions = await SubmissionService.find({ campaignId: req.params.id });
-            
+
             const ownersFee = req.body.ownersFee;
             const addresses = submissions.map(submission => submission.userId);
 

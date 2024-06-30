@@ -103,6 +103,25 @@ class CampaignController {
             }
         });
     }
+    payOut(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const campaign = yield CampaignService.findById(req.params.id);
+                const submissions = yield SubmissionService.find({ campaignId: req.params.id });
+                const ownersFee = req.body.ownersFee;
+                const addresses = submissions.map(submission => submission.userId);
+                campaign.status = "paid";
+                yield campaign.save();
+                return new response_util_1.default(statusCodes_util_1.OK, true, "Creators paid successfully", res);
+            }
+            catch (error) {
+                if (error instanceof httpException_util_1.default) {
+                    return new response_util_1.default(error.status, false, error.message, res);
+                }
+                return new response_util_1.default(statusCodes_util_1.INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+            }
+        });
+    }
     getDashboardInfo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

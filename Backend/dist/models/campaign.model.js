@@ -49,7 +49,7 @@ const campaignSchema = new mongoose_1.Schema({
     },
     status: {
         type: String,
-        enum: ["open", "closed", "inProgress"],
+        enum: ["open", "closed", "inProgress", "paid"],
         default: "inProgress"
     }
 }, {
