@@ -5,8 +5,9 @@ import 'react-toastify/dist/ReactToastify.css';
 //Import Needed Components
 import Input from "../create/Input";
 import { useAccount } from "wagmi";
+import SignTransaction from "./signTransaction";
 
-const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
+const Details: React.FC<any> = ({ campaign, setCampaign, loading, error, onSubmit }) => {
     const account = useAccount()
 
     const [seeForm, setSeeForm] = useState<boolean>(false)
@@ -94,7 +95,9 @@ const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
                     }
                 </div>
                 <section className="md:w-[48%] flex flex-col gap-y-5 md:gap-y-10 mt-10 md:mt-0">
-                    <p className={`font-bold`}>{campaign.status}</p>
+                    <p style={{ marginTop: "10px" }} className="text-2xl uppercase md:text-4xl xl:text-6xl font-semibold text-center text-primaryBlue">
+                        {campaign.status}
+                    </p>
                     <div>
                         <div className="flex gap-x-1 items-center">
                             <p className="font-medium">01</p>
@@ -142,8 +145,8 @@ const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
                     </div>
                 </section>
             </main>
+            <SignTransaction campaign={campaign} setCampaign={setCampaign} />
         </section>
-
     );
 }
 
