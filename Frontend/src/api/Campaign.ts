@@ -3,11 +3,20 @@ import axios from 'axios';
 const API_URL = 'https://brandts-backend.vercel.app/api/v1';
 
 export const createCampaign = (campaignData: {}) => {
-    return axios.post(`${API_URL}/campaign`, { campaignData }, {
+    return axios.post(`${API_URL}/campaign`, campaignData, {
         headers: {
             'Content-Type': 'application/json'
         }
     });
+};
+
+export const fetchCampaigns = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/campaign/`);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.error || 'Error fetching campaigns';
+    }
 };
 
 export const fetchCampaignById = async (id: string) => {
@@ -19,16 +28,16 @@ export const fetchCampaignById = async (id: string) => {
     }
 };
 
-export const submitCampaign = (id: string, submissionUrl: string) => {
-    return axios.post(`${API_URL}/campaign/${id}`, { submissionUrl }, {
+export const submitCampaign = (data: {}) => {
+    return axios.post(`${API_URL}/submission`, data, {
         headers: {
             'Content-Type': 'application/json'
         }
     });
 };
 
-export const disqualifyCreator = (campaignId: string, creatorId: string) => {
-    return axios.patch(`${API_URL}/campaign/${campaignId}/disqualify/${creatorId}`, {
+export const disqualifyCreator = (submissionId: string) => {
+    return axios.delete(`${API_URL}/submission/${submissionId}`, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -37,7 +46,7 @@ export const disqualifyCreator = (campaignId: string, creatorId: string) => {
 
 export const fetchDashboardData = async (userId: string) => {
     try {
-        const response = await axios.get(`${API_URL}/campaign/all/${userId}`);
+        const response = await axios.get(`${API_URL}/campaign/dashboard/${userId}`);
         return response.data;
     } catch (error: any) {
         throw error.response.data.error || 'Error fetching campaign';

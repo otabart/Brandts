@@ -7,9 +7,10 @@ import Dropdown from "./Dropdown";
 import createImage from "../../../public/images/create.svg";
 
 //Import Needed Data
-import targetAudience from "../../../public/data/targetAudience.json"
-import apps from "../../../public/data/apps.json"
+import targetAudience from "../../data/targetAudience.json"
+import apps from "../../data/apps.json"
 import Textarea from "./Textarea";
+import { useAccount } from 'wagmi';
 interface CreateFormProps {
   onSubmit: (campaign: CampaignData) => void;
 }
@@ -28,6 +29,7 @@ interface CampaignData {
 }
 
 const CreateForm: React.FC<CreateFormProps> = ({ onSubmit }) => {
+  const account = useAccount()
 
   const [campaign, setCampaign] = useState({
     title: '',
@@ -39,7 +41,8 @@ const CreateForm: React.FC<CreateFormProps> = ({ onSubmit }) => {
     requirement: '',
     targetAudience: '',
     app: '',
-    additionalLink: ''
+    additionalLink: '',
+    userId: account.address
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

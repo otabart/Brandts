@@ -46,7 +46,7 @@ const NavBar = () => {
           <nav className="flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:items-center md:gap-x-3 xl:gap-x-5 mt-20 md:mt-0">
             <Link
               to="create"
-              className={`${location.pathname === "/campaign/create" && "text-white md:text-primaryBlue"} font-medium hover:text-white md:hover:text-primaryBlue`}
+              className={`${location.pathname === "/create" && "text-white md:text-primaryBlue"} font-medium hover:text-white md:hover:text-primaryBlue`}
             >
               Create Campaign
             </Link>
