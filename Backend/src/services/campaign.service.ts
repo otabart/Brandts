@@ -53,7 +53,7 @@ export default class CampaignService {
     async findAll() {
         try {
 
-            const campaign = await CampaignRepository.find({});
+            const campaign = await CampaignRepository.find({ status: "open" });
 
             return campaign;
 
@@ -86,11 +86,11 @@ export default class CampaignService {
     async deleteById(id: string) {
         try {
             const campaign = await CampaignRepository.deleteById(id);
-    
+
             if (!campaign) {
                 throw new HttpException(NOT_FOUND, "Campaign not found");
             }
-    
+
             return campaign;
         } catch (error: any) {
             if (error.status === NOT_FOUND) {
@@ -98,6 +98,6 @@ export default class CampaignService {
             }
             throw new HttpException(INTERNAL_SERVER_ERROR, `Error deleting campaign: ${error.message}`);
         }
-    }   
+    }
 
 }

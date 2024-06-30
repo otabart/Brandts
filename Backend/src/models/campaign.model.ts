@@ -49,7 +49,7 @@ const campaignSchema = new Schema<ICampaign>({
     },
     status: {
         type: String,
-        enum: ["open", "closed", "inProgress"],
+        enum: ["open", "closed", "inProgress", "paid"],
         default: "inProgress"
     }
 }, {

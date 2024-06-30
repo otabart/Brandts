@@ -1,6 +1,6 @@
 import express from 'express';
-import UserController from '../controllers/submission.controller';
-const { createSubmission, disqualifyCreator } = new UserController();
+import SubmissionController from '../controllers/submission.controller';
+const { createSubmission, disqualifyCreator } = new SubmissionController();
 const router = express.Router();
 
 //create submission

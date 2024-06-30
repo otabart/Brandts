@@ -90,11 +90,32 @@ export default class CampaignController {
 
     async deleteCampaign(req: Request, res: Response) {
         const { id } = req.params;
-    
+
         try {
             const deletedCampaign = await CampaignService.deleteById(id);
-    
+
             return new CustomResponse(OK, true, "Campaign deleted successfully", res, deletedCampaign);
+        } catch (error: any) {
+            if (error instanceof HttpException) {
+                return new CustomResponse(error.status, false, error.message, res);
+            }
+            return new CustomResponse(INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+        }
+    }
+
+    async payOut(req: Request, res: Response) {
+        try {
+            const campaign = await CampaignService.findById(req.params.id);
+            const submissions = await SubmissionService.find({ campaignId: req.params.id });
+
+            const ownersFee = req.body.ownersFee;
+            const addresses = submissions.map(submission => submission.userId);
+
+            campaign.status = "paid";
+            await campaign.save();
+
+
+            return new CustomResponse(OK, true, "Creators paid successfully", res);
         } catch (error: any) {
             if (error instanceof HttpException) {
                 return new CustomResponse(error.status, false, error.message, res);
