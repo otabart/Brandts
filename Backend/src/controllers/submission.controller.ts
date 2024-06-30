@@ -11,6 +11,15 @@ export default class SubmissionController {
 
         try {
 
+            const foundSubmission = await SubmissionService.findOne({
+                userId: req.body.userId,
+                submissionUrl: req.body.submissionUrl
+            })
+
+            if (foundSubmission) {
+                return new CustomResponse(OK, true, "User already submitted the specified video", res, foundSubmission);
+            }
+
             const submission = await SubmissionService.create(req.body);
 
             return new CustomResponse(OK, true, "Submission submitted successfully", res, submission);
