@@ -1,6 +1,6 @@
 import express from 'express';
 import CampaignController from '../controllers/campaign.controller';
-const { createCampaign, getACampaign, getAllCampaign, getDashboardInfo, closeCampaign, deleteCampaign, payOut } = new CampaignController();
+const { createCampaign, getACampaign, getAllCampaign, getDashboardInfo, closeCampaign, deleteCampaign, payOut, openCampaign } = new CampaignController();
 const router = express.Router();
 
 //create campaign
@@ -17,6 +17,9 @@ router.get("/dashboard/:userId", getDashboardInfo);
 
 //pay creators
 router.patch("/pay/:id", payOut);
+
+//open a campaign
+router.patch("/open/:id", openCampaign);
 
 //close a campaign
 router.patch("/:id", closeCampaign);

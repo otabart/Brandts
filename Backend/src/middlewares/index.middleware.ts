@@ -10,7 +10,7 @@ import { BASEPATH } from "../configs/constants.config";
 
 export default (app: Application) => {
   // Logging middleware
-  app.use(morgan("combined"));
+  app.use(morgan(""));
 
   // CORS middleware
   app.use(cors({

@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { ethers } from "ethers";
+import ContractABI from "../ABI/campaignManagerABI.json";
 import CustomResponse from "../utils/helpers/response.util";
 import HttpException from "../utils/helpers/httpException.util";
 import { INTERNAL_SERVER_ERROR, OK } from "../utils/statusCodes.util";
@@ -73,6 +75,21 @@ export default class CampaignController {
         }
     }
 
+    async openCampaign(req: Request, res: Response) {
+        const { id } = req.params;
+
+        try {
+            const openedCampaign = await CampaignService.openById(id);
+
+            return new CustomResponse(OK, true, "Campaign opened successfully", res, openedCampaign);
+        } catch (error: any) {
+            if (error instanceof HttpException) {
+                return new CustomResponse(error.status, false, error.message, res);
+            }
+            return new CustomResponse(INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+        }
+    }
+
     async closeCampaign(req: Request, res: Response) {
         const { id } = req.params;
 
@@ -109,11 +126,42 @@ export default class CampaignController {
             const submissions = await SubmissionService.find({ campaignId: req.params.id });
 
             const ownersFee = req.body.ownersFee;
-            const addresses = submissions.map(submission => submission.userId);
+            const campaignId = req.body.userId;
+            const addresses = submissions.map(submission => submission.userId as `0x${string}`);
 
             campaign.status = "paid";
             await campaign.save();
 
+            const CampaignABI = ContractABI.abi;
+
+            const CONTRACT_ADDRESS = "0x5F27CC10D7fD2a05294BB4ee4d05973f012fe99D";
+
+            const NodeUrl = process.env.ALCHEMY_KEY;
+
+            const privateKey = process.env.WALLET_KEY;
+
+            const provider = new ethers.JsonRpcProvider(NodeUrl);
+            const wallet = new ethers.Wallet(privateKey!, provider);
+
+            const contract = new ethers.Contract(
+                CONTRACT_ADDRESS,
+                CampaignABI,
+                wallet
+            );
+
+            // contract.on("Payout", (campaignId, recipient, amount) => {
+            //     console.log("Payout event emitted!");
+            //     console.log("Campaign ID:", campaignId.toString());
+            //     console.log("Recipient:", recipient);
+            //     console.log("Amount:", ethers.formatEther(amount));
+            // });
+
+            const transactionResponse = await contract.payout(
+                campaignId,
+                addresses,
+                ownersFee
+            );
+            await transactionResponse.wait();
 
             return new CustomResponse(OK, true, "Creators paid successfully", res);
         } catch (error: any) {

@@ -65,6 +65,25 @@ class CampaignService {
             }
         });
     }
+    openById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const campaign = yield CampaignRepository.findById(id);
+                if (!campaign) {
+                    throw new httpException_util_1.default(statusCodes_util_1.NOT_FOUND, "Campaign not found");
+                }
+                campaign.status = "open";
+                yield campaign.save();
+                return campaign;
+            }
+            catch (error) {
+                if (error.status === statusCodes_util_1.NOT_FOUND) {
+                    throw error;
+                }
+                throw new httpException_util_1.default(statusCodes_util_1.INTERNAL_SERVER_ERROR, `Error closing campaign: ${error.message}`);
+            }
+        });
+    }
     closeById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
