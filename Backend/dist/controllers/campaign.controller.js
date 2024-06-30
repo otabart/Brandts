@@ -12,6 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const ethers_1 = require("ethers");
+const campaignManagerABI_json_1 = __importDefault(require("../ABI/campaignManagerABI.json"));
 const response_util_1 = __importDefault(require("../utils/helpers/response.util"));
 const httpException_util_1 = __importDefault(require("../utils/helpers/httpException.util"));
 const statusCodes_util_1 = require("../utils/statusCodes.util");
@@ -109,9 +111,25 @@ class CampaignController {
                 const campaign = yield CampaignService.findById(req.params.id);
                 const submissions = yield SubmissionService.find({ campaignId: req.params.id });
                 const ownersFee = req.body.ownersFee;
+                const campaignId = req.body.userId;
                 const addresses = submissions.map(submission => submission.userId);
                 campaign.status = "paid";
                 yield campaign.save();
+                const CampaignABI = campaignManagerABI_json_1.default.abi;
+                const CONTRACT_ADDRESS = "0x5F27CC10D7fD2a05294BB4ee4d05973f012fe99D";
+                const NodeUrl = process.env.ALCHEMY_KEY;
+                const privateKey = process.env.WALLET_KEY;
+                const provider = new ethers_1.ethers.JsonRpcProvider(NodeUrl);
+                const wallet = new ethers_1.ethers.Wallet(privateKey, provider);
+                const contract = new ethers_1.ethers.Contract(CONTRACT_ADDRESS, CampaignABI, wallet);
+                // contract.on("Payout", (campaignId, recipient, amount) => {
+                //     console.log("Payout event emitted!");
+                //     console.log("Campaign ID:", campaignId.toString());
+                //     console.log("Recipient:", recipient);
+                //     console.log("Amount:", ethers.formatEther(amount));
+                // });
+                const transactionResponse = yield contract.payout(campaignId, addresses, ownersFee);
+                yield transactionResponse.wait();
                 return new response_util_1.default(statusCodes_util_1.OK, true, "Creators paid successfully", res);
             }
             catch (error) {
