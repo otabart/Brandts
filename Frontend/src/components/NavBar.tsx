@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 
 //Import Needed Icons
 import { Category2, CloseCircle } from "iconsax-react";
 import Dropdown from "./connectWallet/Dropdown";
 import { useAccount, useDisconnect } from 'wagmi'
+import { toast } from "react-toastify";
 
 const NavBar = () => {
   const account = useAccount()
@@ -24,6 +25,32 @@ const NavBar = () => {
 
   const location = useLocation();
 
+  const navigateToCreate = () => {
+    if (!account.address) {
+      toast.error("Please connect your wallet.");
+      return <Navigate to="/" />;
+    }
+    return <Navigate to="/create" />;
+  };
+
+  const navigateToDashboard = () => {
+    if (!account.address) {
+      toast.error("Please connect your wallet.");
+      return <Navigate to="/" />;
+    }
+    return <Navigate to="/dashboard" />;
+  };
+
+  const navigateToView = () => {
+    if (!account.address) {
+      toast.error("Please connect your wallet.");
+      return <Navigate to="/" />;
+    }
+    return <Navigate to="/view" />;
+  };
+
+
+
   return (
     <main className="relative">
       <div className="flex justify-between items-center md:text-sm xl:text-base py-6 md:py-8 px-5 sm:px-10 md:px-15 xl:px-20">
@@ -41,22 +68,25 @@ const NavBar = () => {
           className={`${isOpen ? "translate-x-0" : "-translate-x-full"
             } md:translate-x-0 fixed md:static top-0 left-0 w-72 p-4 md:p-0 md:w-auto h-full md:h-auto bg-primaryBlue md:bg-white transition-transform duration-300 ease-in-out z-50`}
         >
-          <CloseCircle size="32" variant="Bold" className="md:hidden absolute top-4 right-4 cursor-pointer" onClick={toggleMenu}/>
+          <CloseCircle size="32" variant="Bold" className="md:hidden absolute top-4 right-4 cursor-pointer" onClick={toggleMenu} />
 
           <nav className="flex flex-col gap-y-5 md:gap-y-0 md:flex-row md:items-center md:gap-x-3 xl:gap-x-5 mt-20 md:mt-0">
             <Link
+              onClick={navigateToCreate}
               to="create"
               className={`${location.pathname === "/create" && "text-white md:text-primaryBlue"} font-medium hover:text-white md:hover:text-primaryBlue`}
             >
               Create Campaign
             </Link>
             <Link
+              onClick={navigateToView}
               to="view"
               className={`${location.pathname === "/view" && "text-white md:text-primaryBlue"} font-medium hover:text-white md:hover:text-primaryBlue`}
             >
               View Campaign
             </Link>
             <Link
+              onClick={navigateToDashboard}
               to="dashboard"
               className={`${location.pathname === "/dashboard" && "text-white md:text-primaryBlue"} font-medium hover:text-white md:hover:text-primaryBlue`}
             >

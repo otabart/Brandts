@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { createPreview } from "../../utils/cutSentence";
 
 const CampaignCard = ({ campaigns }: any) => {
-  console.log(campaigns)
+
   return (
     <main className="flex flex-wrap gap-5 xl:gap-10 text-xs md:text-sm xl:text-base">
       {campaigns.map((data: any) => (

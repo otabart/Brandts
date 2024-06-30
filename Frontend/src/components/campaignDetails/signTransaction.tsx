@@ -64,7 +64,7 @@ const SignTransaction: React.FC<any> = ({ campaign }) => {
 
         try {
             if (simulateContractData?.request) {
-                const transaction = await writeContractAsync(simulateContractData.request);
+                await writeContractAsync(simulateContractData.request);
                 if (writeError) {
                     console.error('Error writing contract:', writeError.message);
                     toast.error('Failed to create campaign. Please try again.');
@@ -73,7 +73,6 @@ const SignTransaction: React.FC<any> = ({ campaign }) => {
                 await openCampaignById(campaignId);
                 toast.success('Campaign created successfully');
                 window.location.reload();
-                console.log('Transaction sent:', transaction);
             } else {
                 console.error('Simulation data not available.');
                 toast.error('Failed to initiate campaign creation.');
