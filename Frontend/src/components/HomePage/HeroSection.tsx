@@ -27,7 +27,14 @@ const HeroSection = () => {
           elevate your brand's success. Start now and transform your audience
           engagement.
         </p>
-        <Link to="create" className="bg-white text-primaryBlue text-center rounded-xl w-40 py-3 mt-10 lg:mt-14 hover:-translate-y-1 hover:translate-x-1 duration-300">Get Started</Link>
+        <div className="flex justify-between mt-10 lg:mt-14 space-x-4">
+          <Link to="create" className="bg-white text-primaryBlue text-center rounded-xl w-40 py-3 hover:-translate-y-1 hover:translate-x-1 duration-300">
+            Get Started
+          </Link>
+          <Link to="view" className="bg-white text-primaryBlue text-center rounded-xl w-40 py-3 hover:-translate-y-1 hover:translate-x-1 duration-300">
+            Submit content
+          </Link>
+        </div>
       </div>
     </main>
   );

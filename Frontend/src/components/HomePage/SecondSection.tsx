@@ -7,9 +7,9 @@ import secondImg from "/images/second.svg"
 const SecondSection = () => {
     return (
         <main className="py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-15 xl:px-20 text-xs md:text-sm xl:text-base mt-10">
-                <div className="bg-accentColor text-center py-2 rounded-3xl w-24 sm:w-28 md:w-32 lg:w-40 xl:w-44 font-medium my-10">
-                    <p>SERVICES</p>
-                </div>
+            <div className="bg-accentColor text-center py-2 rounded-3xl w-24 sm:w-28 md:w-32 lg:w-40 xl:w-44 font-medium my-10">
+                <p>SERVICES</p>
+            </div>
             <div className="flex flex-col-reverse gap-y-5 md:gap-y-0 md:flex-row md:justify-between">
                 <div className="md:w-[48%] xl:w-[45%]">
                     <img
@@ -35,7 +35,7 @@ const SecondSection = () => {
                         </div>
                     </div>
                     <div className="my-10">
-                        <Link to="/create" className="px-5 py-3 bg-primaryBlue border-inherit rounded-3xl text-white hover:bg-accentColor hover:text-black duration-300">Create a Campaign</Link>
+                        <Link to="/create" className="px-5 py-3 bg-primaryBlue border-inherit rounded-3xl text-white hover:bg-accentColor hover:text-black duration-300">Get Started</Link>
                     </div>
                 </div>
             </div>
