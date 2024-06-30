@@ -63,6 +63,26 @@ export default class CampaignService {
         }
     }
 
+    async openById(id: string) {
+        try {
+            const campaign = await CampaignRepository.findById(id);
+
+            if (!campaign) {
+                throw new HttpException(NOT_FOUND, "Campaign not found");
+            }
+
+            campaign.status = "open";
+            await campaign.save();
+
+            return campaign;
+        } catch (error: any) {
+            if (error.status === NOT_FOUND) {
+                throw error;
+            }
+            throw new HttpException(INTERNAL_SERVER_ERROR, `Error closing campaign: ${error.message}`);
+        }
+    }
+
     async closeById(id: string) {
         try {
             const campaign = await CampaignRepository.findById(id);

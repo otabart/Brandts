@@ -75,6 +75,21 @@ class CampaignController {
             }
         });
     }
+    openCampaign(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            try {
+                const openedCampaign = yield CampaignService.openById(id);
+                return new response_util_1.default(statusCodes_util_1.OK, true, "Campaign opened successfully", res, openedCampaign);
+            }
+            catch (error) {
+                if (error instanceof httpException_util_1.default) {
+                    return new response_util_1.default(error.status, false, error.message, res);
+                }
+                return new response_util_1.default(statusCodes_util_1.INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+            }
+        });
+    }
     closeCampaign(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

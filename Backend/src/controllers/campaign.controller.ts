@@ -75,6 +75,21 @@ export default class CampaignController {
         }
     }
 
+    async openCampaign(req: Request, res: Response) {
+        const { id } = req.params;
+
+        try {
+            const openedCampaign = await CampaignService.openById(id);
+
+            return new CustomResponse(OK, true, "Campaign opened successfully", res, openedCampaign);
+        } catch (error: any) {
+            if (error instanceof HttpException) {
+                return new CustomResponse(error.status, false, error.message, res);
+            }
+            return new CustomResponse(INTERNAL_SERVER_ERROR, false, `Error: ${error.message}`, res);
+        }
+    }
+
     async closeCampaign(req: Request, res: Response) {
         const { id } = req.params;
 
