@@ -37,6 +37,15 @@ export const closeCampaignById = async (id: string) => {
     }
 };
 
+export const deleteCampaignById = async (id: string) => {
+    try {
+        const response = await axios.delete(`${API_URL}/campaign/${id}`);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.error || 'Error closing campaign';
+    }
+};
+
 export const submitCampaign = (data: {}) => {
     return axios.post(`${API_URL}/submission`, data, {
         headers: {

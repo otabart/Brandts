@@ -1,5 +1,5 @@
 import { useAccount, useSignTypedData, useSimulateContract, useWriteContract } from "wagmi";
-import { closeCampaignById } from "../../api/Campaign";
+import { closeCampaignById, deleteCampaignById } from "../../api/Campaign";
 import CampaignManagerABI from "../../ABI/campaignManagerABI.json";
 import { ethers, parseEther } from 'ethers';
 import { useMemo, useState } from "react";
@@ -82,6 +82,14 @@ const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
     const handleCloseCampaign = async (campaignId: string) => {
         try {
             await closeCampaignById(campaignId);
+        } catch (error) {
+            console.error('Error closing campaign:', error);
+        }
+    };
+
+    const handleDeleteCampaign = async (campaignId: string) => {
+        try {
+            await deleteCampaignById(campaignId);
             setCampaign((prevCampaign: any) => ({
                 ...prevCampaign,
                 campaignDetails: prevCampaign.campaignDetails.status === "closed"
@@ -90,8 +98,6 @@ const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
             console.error('Error closing campaign:', error);
         }
     };
-
-
 
     return (<div>
         {account.address === campaign.userId && (
@@ -121,7 +127,7 @@ const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
                         </div>
                     </div>
                 )}
-                {((campaign.status === "open") || (campaign.status === "inProgress")) && (
+                {(campaign.status === "open") && (
                     <div className="mt-4 flex flex-col items-center" style={{ marginTop: "20px" }}>
                         <button
                             onClick={() => handleCloseCampaign(campaign._id)}
@@ -131,8 +137,19 @@ const SignTransaction: React.FC<any> = ({ campaign, setCampaign }) => {
                         >
                             Close Campaign
                         </button>
+                    </div>)}
+                {(campaign.status === "inProgress") &&
+                    <div className="mt-4 flex flex-col items-center" style={{ marginTop: "20px" }}>
+                        <button
+                            onClick={() => handleDeleteCampaign(campaign._id)}
+                            className="w-40 md:w-60 rounded-3xl px-5 py-3 bg-bgDark border-inherit border-2 text-white hover:text-inherit hover:bg-white duration-300"
+                            type="submit"
+                            style={{ marginRight: "20px" }}
+                        >
+                            Delete Campaign
+                        </button>
                     </div>
-                )}
+                }
             </>
         )}
     </div>)
