@@ -28,6 +28,15 @@ export const fetchCampaignById = async (id: string) => {
     }
 };
 
+export const openCampaignById = async (id: string) => {
+    try {
+        const response = await axios.patch(`${API_URL}/campaign/open/${id}`);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.error || 'Error creating campaign';
+    }
+};
+
 export const closeCampaignById = async (id: string) => {
     try {
         const response = await axios.patch(`${API_URL}/campaign/${id}`);
@@ -43,6 +52,15 @@ export const deleteCampaignById = async (id: string) => {
         return response.data;
     } catch (error: any) {
         throw error.response.data.error || 'Error closing campaign';
+    }
+};
+
+export const payOutById = async (id: string) => {
+    try {
+        const response = await axios.patch(`${API_URL}/campaign/pay/${id}`);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.error || 'Error paying creators';
     }
 };
 

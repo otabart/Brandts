@@ -18,7 +18,6 @@ const Campaign: React.FC<any> = ({campaigns, loading, error}) => {
         return <p>No campaigns found</p>;
     }
 
-    console.log(campaigns)
 
     return (
         <main className="py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-15 xl:px-20 text-xs md:text-sm xl:text-base mt-10">
