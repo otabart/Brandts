@@ -161,7 +161,7 @@ export default class CampaignController {
                 addresses,
                 ownersFee
             );
-            await transactionResponse.wait();
+            // await transactionResponse.wait();
 
             return new CustomResponse(OK, true, "Creators paid successfully", res);
         } catch (error: any) {
