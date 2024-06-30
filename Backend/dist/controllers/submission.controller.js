@@ -21,6 +21,13 @@ class SubmissionController {
     createSubmission(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                const foundSubmission = yield SubmissionService.findOne({
+                    userId: req.body.userId,
+                    submissionUrl: req.body.submissionUrl
+                });
+                if (foundSubmission) {
+                    return new response_util_1.default(statusCodes_util_1.OK, true, "User already submitted the specified video", res, foundSubmission);
+                }
                 const submission = yield SubmissionService.create(req.body);
                 return new response_util_1.default(statusCodes_util_1.OK, true, "Submission submitted successfully", res, submission);
             }

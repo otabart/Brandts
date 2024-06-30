@@ -46,7 +46,18 @@ export default class SubmissionService {
 
         } catch (error: any) {
 
-            if (error.status === NOT_FOUND) throw error;
+            throw new HttpException(INTERNAL_SERVER_ERROR, error.message);
+        }
+    }
+
+    async findOne(query: {}) {
+        try {
+
+            const submissions = await SubmissionRepository.findOne(query);
+
+            return submissions;
+
+        } catch (error: any) {
 
             throw new HttpException(INTERNAL_SERVER_ERROR, error.message);
         }
