@@ -58,7 +58,7 @@ const Accordion: React.FC<AccordionItemProps> = ({ content, isOpen, toggle }) =>
           </div>
           <div className="flex justify-between items-center">
             <p className={`my-4 uppercase font-semibold ${content.status === 'open' ? 'text-green-600' : 'text-red-600'}`}>
-              {content.status}
+              {content.status === "paid" ? "CLOSED" : content.status}
             </p>
             <Link className="mt-4 text-primaryBlue hover:text-bgDark duration-300" to={`/details/${content.id}`}>
               Read More
