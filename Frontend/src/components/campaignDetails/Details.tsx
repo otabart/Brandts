@@ -5,8 +5,9 @@ import 'react-toastify/dist/ReactToastify.css';
 //Import Needed Components
 import Input from "../create/Input";
 import { useAccount } from "wagmi";
+import { closeCampaignById } from "../../api/Campaign";
 
-const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
+const Details: React.FC<any> = ({ campaign, setCampaign, loading, error, onSubmit }) => {
     const account = useAccount()
 
     const [seeForm, setSeeForm] = useState<boolean>(false)
@@ -34,6 +35,18 @@ const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
         setName('');
         setEmail('');
         setSubmissionUrl('');
+    };
+
+    const handleCloseCampaign = async (campaignId: string) => {
+        try {
+            await closeCampaignById(campaignId);
+            setCampaign((prevCampaign: any) => ({
+                ...prevCampaign,
+                campaignDetails: prevCampaign.campaignDetails.status === "closed"
+            }));
+        } catch (error) {
+            console.error('Error disqualifying creator:', error);
+        }
     };
 
     const toggleForm = () => {
@@ -94,7 +107,9 @@ const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
                     }
                 </div>
                 <section className="md:w-[48%] flex flex-col gap-y-5 md:gap-y-10 mt-10 md:mt-0">
-                    <p className={`font-bold`}>{campaign.status}</p>
+                    <p style={{ marginTop: "10px" }} className="text-2xl uppercase md:text-4xl xl:text-6xl font-semibold text-center text-primaryBlue">
+                        {campaign.status}
+                    </p>
                     <div>
                         <div className="flex gap-x-1 items-center">
                             <p className="font-medium">01</p>
@@ -142,8 +157,47 @@ const Details: React.FC<any> = ({ campaign, loading, error, onSubmit }) => {
                     </div>
                 </section>
             </main>
+            <div>
+                {account.address === campaign.userId && (
+                    <>
+                        {campaign.status === "inProgress" && (
+                            <div className="mt-4 flex flex-col items-center" style={{ marginTop: "20px" }}>
+                                <p className="text-sm md:text-base xl:text-lg font-semibold mb-4">
+                                    Amount: {campaign.budget} Eth
+                                </p>
+                                <div className="flex space-x-2" style={{ marginTop: "20px" }}>
+                                    <button
+                                        className="w-40 md:w-60 rounded-3xl px-5 py-3 bg-bgDark border-inherit border-2 text-white hover:text-inherit hover:bg-white duration-300"
+                                        type="submit"
+                                        style={{ marginRight: "20px" }}
+                                    >
+                                        Sign Payment
+                                    </button>
+                                    <button
+                                        className="w-40 md:w-60 rounded-3xl px-5 py-3 bg-bgDark border-inherit border-2 text-white hover:text-inherit hover:bg-white duration-300"
+                                        type="submit"
+                                    >
+                                        Pay
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                        {campaign.status === "open" && (
+                            <div className="mt-4 flex flex-col items-center" style={{ marginTop: "20px" }}>
+                                <button
+                                    onClick={() => handleCloseCampaign(campaign._id)}
+                                    className="w-40 md:w-60 rounded-3xl px-5 py-3 bg-bgDark border-inherit border-2 text-white hover:text-inherit hover:bg-white duration-300"
+                                    type="submit"
+                                    style={{ marginRight: "20px" }}
+                                >
+                                    Close Campaign
+                                </button>
+                            </div>
+                        )}
+                    </>
+                )}
+            </div>
         </section>
-
     );
 }
 

@@ -58,7 +58,7 @@ const CampaignDetails = () => {
     return (
         <main>
             <HeroSection imageUrl={viewImg} imageUrl1={viewImg1} heading="Time to Shine!" subHeading="Showcase Your Creativity!" />
-            <Details campaign={campaign?.campaignDetails} loading={loading} error={error} onSubmit={handleLinkSubmit} />
+            <Details campaign={campaign?.campaignDetails} setCampaign={setCampaign} loading={loading} error={error} onSubmit={handleLinkSubmit} />
             {campaign && campaign.creatorDetails ? (
                 campaign?.creatorDetails.length > 0 ? (
                     <Submissions campaigns={campaign?.creatorDetails} handleDisqualify={handleDisqualify} />
