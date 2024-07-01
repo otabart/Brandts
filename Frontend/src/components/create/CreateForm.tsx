@@ -85,7 +85,7 @@ const CreateForm: React.FC<CreateFormProps> = ({ onSubmit }) => {
           <Textarea value={campaign.description} onChange={handleChange} />
           <Input name="goal" value={campaign.goal} type="text" id="goal" placeholder="Enter Your Goal" label="Campaign Goal" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
           <Input name="duration" value={campaign.duration} type="text" id="duration" placeholder="Eg: 3" label="Enter Campaign Duration(days)" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
-          <Input name="budget" value={campaign.budget} type="text" id="budget" pattern="\d+" title="Please enter only numbers (0-9)" placeholder="Amount in Ethereum Eg: 2" label="Campaign Budget" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
+          <Input name="budget" value={campaign.budget} type="text" id="budget" title="Please enter only numbers (0-9)" placeholder="Amount in Ethereum Eg: 2" label="Campaign Budget" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
           <Input name="requirement" value={campaign.requirement} type="text" id="requirement" placeholder="Eg: Three Minutes Video with at least 100 likes" label="Campaign Requirement" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
           <Dropdown label="Campaign Audience" id="targetAudience" value={campaign.targetAudience} onChange={(value) => handleDropdownChange('targetAudience', value as unknown as string)} options={targetAudience} />
           <Dropdown label="Campaign Apps" id="app" value={campaign.app} onChange={(value) => handleDropdownChange('app', value as unknown as string)} options={apps} />
