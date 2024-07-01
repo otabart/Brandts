@@ -82,7 +82,7 @@ const CreateForm: React.FC<CreateFormProps> = ({ onSubmit }) => {
         <form onSubmit={handleSubmit} className="mt-10 text-left flex flex-col gap-y-5 mx-auto">
           <Input name="title" value={campaign.title} type="text" id="title" placeholder="Eg: Kiki Dance Challenge" label="Campaign Title" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
           <Input name="image" value={campaign.image} type="text" id="image" placeholder="Enter Your Image Link (URL)" label="Campaign Image" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
-          <Textarea value={campaign.description} onChange={handleChange}/>
+          <Textarea value={campaign.description} onChange={handleChange} />
           <Input name="goal" value={campaign.goal} type="text" id="goal" placeholder="Enter Your Goal" label="Campaign Goal" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
           <Input name="duration" value={campaign.duration} type="text" id="duration" placeholder="Eg: 3" label="Enter Campaign Duration(days)" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
           <Input name="budget" value={campaign.budget} type="text" id="budget" pattern="\d+" title="Please enter only numbers (0-9)" placeholder="Amount in Ethereum Eg: 2" label="Campaign Budget" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
@@ -90,7 +90,13 @@ const CreateForm: React.FC<CreateFormProps> = ({ onSubmit }) => {
           <Dropdown label="Campaign Audience" id="targetAudience" value={campaign.targetAudience} onChange={(value) => handleDropdownChange('targetAudience', value as unknown as string)} options={targetAudience} />
           <Dropdown label="Campaign Apps" id="app" value={campaign.app} onChange={(value) => handleDropdownChange('app', value as unknown as string)} options={apps} />
           <Input name="additionalLink" value={campaign.additionalLink} type="text" id="additionalLinks" placeholder="Additional Links?" label="Additional Links" required={true} otherClass="bg-white rounded-xl" onChange={handleChange} />
-          <strong><p style={{ color: "red", marginTop: "5" }}>You will be prompted to pay the sum of {campaign.budget}</p></strong>
+          {campaign.budget !== "" &&
+            <strong>
+              <p style={{ color: "red", marginTop: "5px" }}>
+                You will be prompted to pay the sum of {campaign.budget} ETH in your dashboard
+              </p>
+            </strong>
+          }
           <button type="submit" className="mt-10 text-xs md:text-sm xl:text-base px-5 py-4 bg-primaryBlue hover:bg-accentColor duration-300 rounded-xl">Create Campaign</button>
         </form>
       </div>

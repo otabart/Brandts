@@ -1,5 +1,8 @@
-const Submissions: React.FC<any> = ({ campaigns = [], handleDisqualify }) => {
+import { useAccount } from "wagmi";
 
+const Submissions: React.FC<any> = ({ campaigns = [], handleDisqualify, userId }) => {
+    const account = useAccount();
+console.log(userId)
     return (
         <main className="py-5 md:py-10 lg:py-20 px-5 sm:px-10 md:px-15 xl:px-20 text-xs md:text-sm xl:text-base mt-10">
             <p className="text-lg md:text-xl xl:text2xl font-medium">Creators Submissions</p>
@@ -14,7 +17,9 @@ const Submissions: React.FC<any> = ({ campaigns = [], handleDisqualify }) => {
                             <th className="py-3 px-5 text-left">Likes</th>
                             <th className="py-3 px-5 text-left">Comments</th>
                             {/* <th className="py-3 px-5 text-left">Shares</th> */}
-                            <th className="py-3 px-5 text-left">Action</th>
+                            {account.address === userId && (
+                                <th className="py-3 px-5 text-left">Action</th>
+                            )}
                         </tr>
                     </thead>
                     {campaigns ? <tbody>
@@ -39,14 +44,16 @@ const Submissions: React.FC<any> = ({ campaigns = [], handleDisqualify }) => {
                                 <td className="py-4 px-5">{campaign.likes}</td>
                                 <td className="py-4 px-5">{campaign.comments}</td>
                                 {/* <td className="py-4 px-5">{item.shares}</td> */}
-                                <td className="py-4 px-5">
-                                    <button onClick={() => handleDisqualify(campaign._id)} className="bg-primaryBlue text-white py-2 px-4 rounded-lg hover:bg-accentColor transition duration-200">
-                                        Disqualify
-                                    </button>
-                                </td>
+                                {account.address === userId && (
+                                    <td className="py-4 px-5">
+                                        <button onClick={() => handleDisqualify(campaign._id)} className="bg-primaryBlue text-white py-2 px-4 rounded-lg hover:bg-accentColor transition duration-200">
+                                            Disqualify
+                                        </button>
+                                    </td>
+                                )}
                             </tr>
                         ))}
-                    </tbody>: <tbody></tbody>}
+                    </tbody> : <tbody></tbody>}
                 </table>
             </div>
         </main>

@@ -15,17 +15,14 @@ const HeroSection = () => {
       </div>
 
       <div className="w-full flex flex-col md:w-[48%] xl:w-[45%] text-sm md:text-base xl:text-lg">
-        <h1 className="font-semibold text-2xl lg:text-4xl xl:text-5xl">
-          Empowering Brands and Creators
+        <h1 style={{"marginBottom": "10px"}} className="font-semibold text-2xl lg:text-4xl xl:text-5xl">
+          Empowering Brands and Creators through Blockchain Innovation
         </h1>
         <p className="font-medium text-base lg:text-lg xl:text-xl mt-2">
           Create, share, and measure campaign success effortlessly.
         </p>
         <p className="mt-6 lg:mt-10 md:text-sm lg:text-lg">
-          Join Brandts to create impactful campaigns and share your innovative
-          ideas. Track performance metrics, engage with your audience, and
-          elevate your brand's success. Start now and transform your audience
-          engagement.
+        Join Brandts today and be part of the future of brand campaigns, where transparency, security, and creativity converge.
         </p>
         <div className="flex justify-between mt-10 lg:mt-14 space-x-4">
           <Link to="create" className="bg-white text-primaryBlue text-center rounded-xl w-40 py-3 hover:-translate-y-1 hover:translate-x-1 duration-300">

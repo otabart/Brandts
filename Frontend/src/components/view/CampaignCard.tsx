@@ -11,7 +11,7 @@ const CampaignCard = ({ campaigns }: any) => {
         <div key={data._id} className="flex flex-col gap-y-3 min-w-[16rem] w-[16rem] sm:w[14rem] lg:w-[20rem] mt-4 shadow border border-[#F0F0F0] p-2 md:p-4 xl:p-6 py-8 rounded-2xl">
           <img className="size-10 sm:size-14 md:size-20 lg:size-24 xl:size-28 2xl:size-32 mx-auto" src={data.image}></img>
           <div className="mt-4">
-            <p className="bg-textGrey rounded-3xl font-medium px-4 py-2">
+            <p className="bg-primaryBlue rounded-3xl font-bold px-4 py-2">
               {data.title}
             </p>
           </div>

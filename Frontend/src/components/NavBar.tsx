@@ -7,6 +7,7 @@ import { Category2, CloseCircle } from "iconsax-react";
 import Dropdown from "./connectWallet/Dropdown";
 import { useAccount, useDisconnect } from 'wagmi'
 import { toast } from "react-toastify";
+import AvatarKit from "./onchainKit/Avartar";
 
 const NavBar = () => {
   const account = useAccount()
@@ -105,8 +106,8 @@ const NavBar = () => {
                   </button>)
                   :
                   (
-                    <div style={{ display: 'flex', alignItems: 'center' }}> {/* Use inline styles for custom spacing */}
-                      <p style={{ marginRight: '10px' }}>{account.address}</p> {/* Adjust marginRight for more spacing */}
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <AvatarKit account={account} />
                       <button
                         className="px-5 p-3 bg-white text-black md:text-white md:bg-primaryBlue border-2 md:border-primaryBlue md:hover:border-primaryBlue md:hover:text-inherit hover:border-white hover:text-white hover:bg-inherit rounded-xl hover:rounded-3xl duration-300"
                         onClick={() => {

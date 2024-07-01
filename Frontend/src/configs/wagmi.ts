@@ -19,3 +19,21 @@ declare module 'wagmi' {
     config: typeof config
   }
 }
+
+import { base } from 'wagmi/chains';
+
+export const wagmiConfig2 = createConfig({
+  chains: [base],
+  multiInjectedProviderDiscovery: false,
+  connectors: [
+    coinbaseWallet({
+      appName: 'yourAppName',
+      preference: 'all',
+      version: '4',
+    }),
+  ],
+  ssr: true,
+  transports: {
+    [base.id]: http(),
+  },
+});
