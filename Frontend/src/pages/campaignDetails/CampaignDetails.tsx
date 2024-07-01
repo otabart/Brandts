@@ -61,7 +61,7 @@ const CampaignDetails = () => {
             <Details campaign={campaign?.campaignDetails} loading={loading} error={error} onSubmit={handleLinkSubmit} />
             {campaign && campaign.creatorDetails ? (
                 campaign?.creatorDetails.length > 0 ? (
-                    <Submissions campaigns={campaign?.creatorDetails} handleDisqualify={handleDisqualify} />
+                    <Submissions campaigns={campaign?.creatorDetails} handleDisqualify={handleDisqualify} userId={campaign?.campaignDetails.userId} />
                 ) : (
                     <p style={{ marginTop: "10px" }} className="text-2xl md:text-4xl xl:text-6xl font-semibold text-center">
                         NO SUBMISSION YET

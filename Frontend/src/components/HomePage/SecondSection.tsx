@@ -23,15 +23,15 @@ const SecondSection = () => {
                     <div className="mt-4 flex gap-y-10 flex-col">
                         <div className="flex flex-col gap-y-2">
                             <p className="text-lg md:text-xl xl:text-2xl font-medium">Create a campaign</p>
-                            <p>Craft compelling campaigns with ease. At Brandts, we empower brands to create impactful marketing campaigns that resonate with their audience. From conceptualizing your campaign to setting measurable goals, our platform provides all the tools you need to succeed. Start your campaign today and watch your brand reach new heights</p>
+                            <p>Craft impactful campaigns with ease. Brandts empowers brands to create and manage marketing campaigns seamlessly. Input your details, fund via wallet, and let our smart contract technology handle the rest. Start today and elevate your brand.</p>
                         </div>
                         <div className="flex flex-col gap-y-2">
                             <p className="text-lg md:text-xl xl:text-2xl font-medium">Participate in a campaign</p>
-                            <p>Join exciting campaigns and showcase your creativity. As a content creator, you have the opportunity to collaborate with top brands and bring their vision to life. Submit your entries, engage with other creators, and gain recognition for your work. Dive into the world of Brandts and make your mark.</p>
+                            <p>Showcase your creativity in exciting campaigns. Collaborate with top brands, submit your video entries, and gain recognition. Join Brandts and make your mark with fair, transparent reward distribution.</p>
                         </div>
                         <div className="flex flex-col gap-y-2">
                             <p className="text-lg md:text-xl xl:text-2xl font-medium">Manage your campaign</p>
-                            <p>Effortlessly manage your campaigns from start to finish. Monitor performance metrics, track engagement, and optimize your strategy with our intuitive dashboard. Stay on top of your campaign’s progress, make data-driven decisions, and ensure your brand's success. With Brandts, campaign management has never been easier.</p>
+                            <p>Effortlessly manage your campaigns. Monitor performance, track engagement, and optimize your strategy with our intuitive dashboard. With Brandts, campaign management is simple and transparent.</p>
                         </div>
                     </div>
                     <div className="my-10">

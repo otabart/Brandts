@@ -1,7 +1,5 @@
 import CampaignCard from "./CampaignCard";
 
-//Import Needed Icons
-import { ArrowLeft3, ArrowRight3 } from "iconsax-react";
 
 
 const Campaign: React.FC<any> = ({campaigns, loading, error}) => {
@@ -27,11 +25,11 @@ const Campaign: React.FC<any> = ({campaigns, loading, error}) => {
                     <CampaignCard campaigns={campaigns} />
                 </div>
             </section>
-            <section className="flex gap-x-5 justify-end items-center mt-10">
+            {/* <section className="flex gap-x-5 justify-end items-center mt-10">
                 <div className="flex gap-x-1 items-center group cursor-pointer"><ArrowLeft3 size="20" variant="Bulk" className="text-bgDark group-hover:-translate-x-1 duration-300" /> <p>Prev</p></div>
                 <p className="font-medium">Page 1 of 10</p>
                 <div className="flex gap-x-1 items-center group cursor-pointer"><p>Next</p><ArrowRight3 size="20" variant="Bulk" className="text-bgDark group-hover:translate-x-1 duration-300" /></div>
-            </section>
+            </section> */}
         </main>
     );
 }
